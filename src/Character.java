@@ -4,7 +4,7 @@ public class Character {
     private int strength;
     private int defense;
     private String race;
-    Private String characterClass;
+    private String characterClass;
 
     public Character(String name, int health, int defense, String race, String characterClass) {
         this.name = name;
