@@ -37,3 +37,4 @@ public class Character {
     public int getHealth() { return health; }
     public String getRace() { return race; }
     public String getCHaracterClass () { return characterClass; }
+    //changed
