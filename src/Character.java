@@ -4,7 +4,7 @@ public class Character {
     private int strength;
     private int defense;
     private String race;
-    Private String characterClass;
+    private String characterClass;
 
     public Character(String name, int health, int defense, String race, String characterClass) {
         this.name = name;
@@ -37,4 +37,5 @@ public class Character {
     public int getHealth() { return health; }
     public String getRace() { return race; }
     public String getCHaracterClass () { return characterClass; }
+}
     //changed

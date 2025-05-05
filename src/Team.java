@@ -11,5 +11,27 @@ public class Team {
     public voic addCharacter (character character) {
         members.add(character);
     }
-    public boolean 
-};
+    public boolean hasLivingMembers() {
+        for (Chaaracter c: members) {
+            if (c.isAlive()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Character getNextAliveCharacter () {
+        for (character c: members) {
+            if (c.isAlive()){
+                return c;
+            }
+        }
+        return null; // No living characters left
+    }
+    public String getTeamName() {
+        return teamName;
+    }
+    public ArrayList<Character> getMembers() { // Return a copy of the members list // to meet criteria
+        return members;
+    }
+}
