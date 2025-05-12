@@ -15,7 +15,7 @@ public class TeamTest {
     }
 
     @Test
-    public void testHassLivingMembers() {
+    public void testhasLivingMembers() {
         Team team = new Team ("Group");
         GameCharacter alive = new GameCharacter ("Alive", 100, 20, 10, "Human", "Warrior");
         GameCharacter dead = new GameCharacter ("Dead", 0, 20, 10, "Human", "Warrior");

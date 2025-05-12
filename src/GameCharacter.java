@@ -47,7 +47,7 @@ public class GameCharacter {
         if (health < 0) health = 0;
     }
 
-    public int getHealth() {
+    public int getHealthPoints() {
         return health;
     }
 

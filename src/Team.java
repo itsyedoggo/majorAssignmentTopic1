@@ -4,15 +4,17 @@ public class Team {
     private String teamName;
     private ArrayList<GameCharacter> members;
 
-    public Team (String teamName) {
+    public Team(String teamName) {
         this.teamName = teamName;
         this.members = new ArrayList<>();
     }
-    public void addCharacter (Character character) {
+
+    public void addCharacter(GameCharacter character) {
         members.add(character);
     }
+
     public boolean hasLivingMembers() {
-        for (Character c: members) {
+        for (GameCharacter c : members) {
             if (c.isAlive()) {
                 return true;
             }
@@ -20,31 +22,20 @@ public class Team {
         return false;
     }
 
-    public GameCharacter getNextAliveCharacter () {
-        for (character c: members) {
-            if (c.isAlive()){
+    public GameCharacter getNextAliveCharacter() {
+        for (GameCharacter c : members) {
+            if (c.isAlive()) {
                 return c;
             }
         }
         return null; // No living characters left
     }
+
     public String getTeamName() {
         return teamName;
     }
+
     public ArrayList<GameCharacter> getMembers() { // Return a copy of the members list // to meet criteria
-        return members;
-    }
-
-    public void battle(Team attackingTeam, Team defendingTeam) {
-        Character attacker = attackingTeam.getNextAliveCharacter();
-        Character defender = defendingTeam.getNextAliveCharacter();
-        if (attacker == null || defender == null) {
-            declareWinner();
-            return;
-        }
-    }
-
-    private void declareWinner() {
-        // Implementation for declaring the winner
+        return new ArrayList<>(members); // Returning a new copy
     }
 }
