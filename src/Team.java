@@ -5,14 +5,14 @@ public class Team {
     private ArrayList<Character> members;
 
     public Team (String teamName) {
-        this.teemName = teamName;
+        this.teamName = teamName;
         this.members = new ArrayList<>();
     }
-    public voic addCharacter (character character) {
+    public void addCharacter (Character character) {
         members.add(character);
     }
     public boolean hasLivingMembers() {
-        for (Chaaracter c: members) {
+        for (Character c: members) {
             if (c.isAlive()) {
                 return true;
             }
