@@ -1,3 +1,5 @@
+private RandomNumberGenerator rng = new RandomNumberGenerator();
+
 public class Character {
     private String name;
     private int health;
@@ -20,8 +22,26 @@ public class Character {
     }
 
     public int attack(character opponent){
-        int randomBonus = (int) (Math.random() * 6); //between 0 - 5
-        int damage = (this.strength - opponent.defense) + randomBonus;
+        int diceRoll = rng.rollDice(); //1-6
+        int baseDamage = this.strength - opponent.defense;
+        int damage;
+
+        if (diceRoll == 6) {
+            damage = (int)(baseDamage * 1.3); // supercharged attack
+        } else if (diceRoll = )
+
+
+
+
+
+
+
+
+
+
+
+        
+
         if (damage < 1) damage = 1; //minimum 1 damage
 
         opponent.takeDamage(damage);

@@ -9,9 +9,9 @@ public class Battle {
 
     public String startFight() {
         if (!attacker1.isAlive() || !attacker2.isAlive()){
-            return "One of the figheters is already dead!!";
+            return "One of the fighters is already dead!!";
         }
-        int damage = attacker1.attach(attacker2);
-        return attacker1.getName() + " attacked " + attacker2.getName() + " for " + damage + "damage!";
+        int damage = attacker1.attack(attacker2);
+        return attacker1.getName() + " attacked " + attacker2.getName() + " for " + damage + " damage!";
     }
 }
