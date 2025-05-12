@@ -8,7 +8,7 @@ public class TeamTest {
     @Test 
     public void testAddCharacterAndRetrieve() {
         Team team = new Team ("Heroes");
-        Character ironman = new Character("Ironman", 100, 20, 10, "Human", "Warrior");
+        GameCharacter ironman = new GameCharacter("Ironman", 100, 20, 10, "Human", "Warrior");
         team.addCharacter(ironman);
 
         assertTrue(team.getMembers().contains(ironman));
@@ -17,8 +17,8 @@ public class TeamTest {
     @Test
     public void testHassLivingMembers() {
         Team team = new Team ("Group");
-        Character alive = new Character ("Alive", 100, 20, 10, "Human", "Warrior");
-        Character dead = new Character ("Dead", 0, 20, 10, "Human", "Warrior");
+        GameCharacter alive = new GameCharacter ("Alive", 100, 20, 10, "Human", "Warrior");
+        GameCharacter dead = new GameCharacter ("Dead", 0, 20, 10, "Human", "Warrior");
 
         team.addCharacter(dead);
         assertFalse(team.hasLivingMembers());
@@ -30,8 +30,8 @@ public class TeamTest {
     @Test
     public void testGetNextAliveCharacter() {
         Team team = new Team ("Squad");
-        Character c1 = new Character("Dead1", 0, 10, 5, "Human", "Warrior");
-        Character c2 = new Character("Alive", 100, 20, 10, "Human", "Warrior");
+        GameCharacter c1 = new GameCharacter("Dead1", 0, 10, 5, "Human", "Warrior");
+        GameCharacter c2 = new GameCharacter("Alive", 100, 20, 10, "Human", "Warrior");
 
         team.addCharacter(c1);
         team.addCharacter(c2);

@@ -1,10 +1,10 @@
-import java.ioFileWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class BattleArena {
     private Team team1;
     private Team team2;
-    privateFileWriter battleLog;
+    private FileWriter battleLog;
 
     public BattleArena (Team team1, Team team2) throws IOException {
         this.team1 = team1;
@@ -20,12 +20,12 @@ public class BattleArena {
             declareWinner();
             return;
         }
-        Character attacker = attackingTeam.getNextAliveCharacter();
-        Character defender = defendingTeam.getNextAliveCharacter();
+        GameCharacter attacker = attackingTeam.getNextAliveCharacter();
+        GameCharacter defender = defendingTeam.getNextAliveCharacter();
 
-        Battle battle = new Battle (attacker, defeder);
+        Battle battle = new Battle (attacker, defender);
         String result = battle.startFight();
-        system.out.println(result);
+        System.out.println(result);
         battleLog.write(result + "\n");
 
         // recursively continue fight, switch attacker and defender

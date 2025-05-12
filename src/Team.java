@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Team {
     private String teamName;
-    private ArrayList<Character> members;
+    private ArrayList<GameCharacter> members;
 
     public Team (String teamName) {
         this.teemName = teamName;
@@ -20,7 +20,7 @@ public class Team {
         return false;
     }
 
-    public Character getNextAliveCharacter () {
+    public GameCharacter getNextAliveCharacter () {
         for (character c: members) {
             if (c.isAlive()){
                 return c;
@@ -31,7 +31,7 @@ public class Team {
     public String getTeamName() {
         return teamName;
     }
-    public ArrayList<Character> getMembers() { // Return a copy of the members list // to meet criteria
+    public ArrayList<GameCharacter> getMembers() { // Return a copy of the members list // to meet criteria
         return members;
     }
 }
