@@ -1,8 +1,6 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import java.beans.Transient;
-
 
 public class BattleTest{
     @Test
