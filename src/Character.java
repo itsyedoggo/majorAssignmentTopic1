@@ -27,24 +27,17 @@ public class Character {
         int damage;
 
         if (diceRoll == 6) {
-            damage = (int)(baseDamage * 1.3); // supercharged attack
-        } else if (diceRoll = )
-
-
-
-
-
-
-
-
-
-
-
-        
-
+            damage = (int)(baseDamage * 2); // supercharged attack
+        } else if (diceRoll = 1) {
+            damage = (int)(baseDamamge * 0.5); //weak attack
+        } else {
+            damage = baseDamage; //normal attack
+        }
         if (damage < 1) damage = 1; //minimum 1 damage
 
         opponent.takeDamage(damage);
+
+        System.out.println(this.name + " rolled a " + diceROll + "!");
         return damage;
     }
     public void takeDamage(int damage) {
