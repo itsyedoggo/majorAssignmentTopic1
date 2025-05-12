@@ -10,7 +10,7 @@ public class CharacterTest {
         Character attacker = new Character("Attacker", 100, 20, 10, "Human", "Warrior");
         Character defender = new Character("Defender", 100, 10, 5, "Human", "Mage");
 
-        int orriginalHP = defender.getHelathPoints();
+        int originalHP = defender.getHealthPoints();
         int damage = attacker.attack(defender);
 
         assertTrue(damage >=0 && damage <= 15);
@@ -23,7 +23,7 @@ public class CharacterTest {
         Character defender = new Character("WeakGuy", 10, 5, 1, "Human", "Rogue");
 
         attacker.attack(defender);
-        assertEquals(0, defender.getHelathPoints());
+        assertEquals(0, defender.getHealthPoints());
     }
 
     @Test

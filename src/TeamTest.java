@@ -24,7 +24,7 @@ public class TeamTest {
         assertFalse(team.hasLivingMembers());
 
         team.addCharacter(alive);
-        assertTrue(team.hasLivingMambers());
+        assertTrue(team.hasLivingMembers());
     }
 
     @Test
@@ -36,7 +36,7 @@ public class TeamTest {
         team.addCharacter(c1);
         team.addCharacter(c2);
 
-        asserEquals("Alive", team.getNextAliveCharacter().getName());
+        assertEquals("Alive", team.getNextAliveCharacter().getName());
     }
 
 }

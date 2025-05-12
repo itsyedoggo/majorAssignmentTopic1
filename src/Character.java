@@ -45,9 +45,12 @@ public class Character {
         if (health < 0) health = 0;
     }
 
+    public int getHealth() {
+        return health;
+    }
 
     public String getName() { return name; }
-    public int getHealth() { return health; }
+    public int getHealthPoints() { return health; }
     public String getRace() { return race; }
     public String getCharacterClass () { return characterClass; }
 }

@@ -1,7 +1,7 @@
 import java.io.IOException;
 
 public class RPGCombatMain {
-    public static void main(Strinf [] args) {
+    public static void main(String [] args) {
         // Create characters
         //creating heroes 
         Character batman = new Character("Batman", 100, 20, 10, "Human", "Warrior");
