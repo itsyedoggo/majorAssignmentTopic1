@@ -16,6 +16,9 @@ The program is structured into several classes, each responsible for a specific 
 *   **BattleLogEntry**: Represents an entry in the battle log. It includes methods for adding log messages and printing the history.
 *   **Equipment**: Represents an item of equipment that can be used by a character. It includes attributes for strength, defense, and intelligence modifiers.
 
+*   **UMLDiagram**
+![alt text](image.png)
+
 ## 3. Instructions to Run the Program
 
 1.  Compile the Java files using `javac *.java`.
