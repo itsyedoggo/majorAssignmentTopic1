@@ -1,6 +1,13 @@
 import java.io.IOException;
 
+/**
+ * Main class for the RPG combat simulation.
+ */
 public class RPGCombatMain {
+    /**
+     * Main method for the RPG combat simulation.
+     * @param args Command line arguments.
+     */
     public static void main(String[] args) {
         // Create characters
         //creating heroes

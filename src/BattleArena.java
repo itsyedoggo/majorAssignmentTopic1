@@ -105,6 +105,10 @@ public class BattleArena {
         }
     }
 
+    /**
+     * Gets the number of battle log entries.
+     * @return The number of battle log entries.
+     */
     public int getBattleLogCount() {
         if (history == null) {
             return 0;
@@ -112,6 +116,10 @@ public class BattleArena {
         return history.countLogs();
     }
 
+    /**
+     * Gets the full battle history as a string.
+     * @return The full battle history as a string.
+     */
     public String getFullBattleHistory() {
         if (history == null) {
             return "No battle history available.";
@@ -119,6 +127,9 @@ public class BattleArena {
         return history.getAllLogs();
     }
 
+    /**
+     * Clears the battle history.
+     */
     public void clearBattleHistory() {
         if (history != null) {
             history.clearHistory();
@@ -129,6 +140,10 @@ public class BattleArena {
         }
     }
 
+    /**
+     * Saves the battle history to a file.
+     * @param filename The name of the file to save the history to.
+     */
     public void saveBattleHistory(String filename) {
         try (FileWriter writer = new FileWriter(filename)) {
             if (history != null) {
@@ -141,6 +156,10 @@ public class BattleArena {
         }
     }
 
+    /**
+     * Loads the battle history from a file.
+     * @param filename The name of the file to load the history from.
+     */
     public void loadBattleHistory(String filename) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
@@ -157,6 +176,11 @@ public class BattleArena {
         }
     }
 
+    /**
+     * Saves the current game state to a file.
+     * @param filename The name of the file to save the game state to.
+     * @throws IOException If an I/O error occurs.
+     */
     public void saveGameState(String filename) throws IOException {
         try (FileWriter writer = new FileWriter(filename)) {
             writer.write("Team 1: " + team1.getTeamName() + "\n");
@@ -170,57 +194,62 @@ public class BattleArena {
         }
     }
 
+    /**
+     * Loads the game state from a file.
+     * @param filename The name of the file to load the game state from.
+     * @throws IOException If an I/O error occurs.
+     */
     public void loadGameState(String filename) throws IOException {
-    try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
-        String team1NameLine = reader.readLine();
-        if (team1NameLine == null || !team1NameLine.startsWith("Team 1: ")) {
-            throw new IOException("Invalid game state file format: Missing or invalid Team 1 line");
-        }
-        String team1Name = team1NameLine.substring(7);
-        team1 = new Team(team1Name);
-
-        String line;
-        while ((line = reader.readLine()) != null && !line.startsWith("Team 2: ")) {
-            String[] parts = line.split(" - HP: ");
-            if (parts.length != 2) {
-                System.out.println("Skipping invalid line: " + line);
-                continue;
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            String team1NameLine = reader.readLine();
+            if (team1NameLine == null || !team1NameLine.startsWith("Team 1: ")) {
+                throw new IOException("Invalid game state file format: Missing or invalid Team 1 line");
             }
-            String name = parts[0].trim();
-            try {
-                int health = Integer.parseInt(parts[1].trim());
-                GameCharacter character = new GameCharacter(name, health, 10, 5, "Human", "Warrior");
-                team1.addMember(character);
-            } catch (NumberFormatException e) {
-                System.err.println("Invalid health format: " + parts[1]);
-            }
-        }
+            String team1Name = team1NameLine.substring(7);
+            team1 = new Team(team1Name);
 
-        if (line == null || !line.startsWith("Team 2: ")) {
-            throw new IOException("Invalid game state file format: Missing or invalid Team 2 line");
-        }
-        String team2Name = line.substring(7);
-        team2 = new Team(team2Name);
-
-        while ((line = reader.readLine()) != null) {
-            String[] parts = line.split(" - HP: ");
-            if (parts.length != 2) {
-                System.out.println("Skipping invalid line: " + line);
-                continue;
+            String line;
+            while ((line = reader.readLine()) != null && !line.startsWith("Team 2: ")) {
+                String[] parts = line.split(" - HP: ");
+                if (parts.length != 2) {
+                    System.out.println("Skipping invalid line: " + line);
+                    continue;
+                }
+                String name = parts[0].trim();
+                try {
+                    int health = Integer.parseInt(parts[1].trim());
+                    GameCharacter character = new GameCharacter(name, health, 10, 5, "Human", "Warrior");
+                    team1.addCharacter(character);
+                } catch (NumberFormatException e) {
+                    System.err.println("Invalid health format: " + parts[1]);
+                }
             }
-            String name = parts[0].trim();
-            try {
-                int health = Integer.parseInt(parts[1].trim());
-                GameCharacter character = new GameCharacter(name, health, 10, 5, "Human", "Warrior");
-                team2.addMember(character);
-            } catch (NumberFormatException e) {
-                System.err.println("Invalid health format: " + parts[1]);
-            }
-        }
 
-    } catch (IOException e) {
-        System.err.println("Error loading game state: " + e.getMessage());
-        throw e; // Re-throw the exception to be handled by the caller
+            if (line == null || !line.startsWith("Team 2: ")) {
+                throw new IOException("Invalid game state file format: Missing or invalid Team 2 line");
+            }
+            String team2Name = line.substring(7);
+            team2 = new Team(team2Name);
+
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(" - HP: ");
+                if (parts.length != 2) {
+                    System.out.println("Skipping invalid line: " + line);
+                    continue;
+                }
+                String name = parts[0].trim();
+                try {
+                    int health = Integer.parseInt(parts[1].trim());
+                    GameCharacter character = new GameCharacter(name, health, 10, 5, "Human", "Warrior");
+                    team2.addCharacter(character);
+                } catch (NumberFormatException e) {
+                    System.err.println("Invalid health format: " + parts[1]);
+                }
+            }
+
+        } catch (IOException e) {
+            System.err.println("Error loading game state: " + e.getMessage());
+            throw e; // Re-throw the exception to be handled by the caller
+        }
     }
-}
 }

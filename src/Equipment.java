@@ -1,28 +1,54 @@
+/**
+ * Represents an item of equipment that can be used by a character.
+ */
 public class Equipment {
     String name;
-    int sM; //strength modifier
-    int dM; // defense modifier
-    int iM; // intelligence modifier
-    
-    public Equipment(String name, int sM, int dM, int iM){
+    int strengthModifier; //strength modifier
+    int defenseModifier; // defense modifier
+    int intelligenceModifier; // intelligence modifier
+
+    /**
+     * Constructs a new Equipment object.
+     * @param name The name of the equipment.
+     * @param strengthModifier The strength modifier of the equipment.
+     * @param defenseModifier The defense modifier of the equipment.
+     * @param intelligenceModifier The intelligence modifier of the equipment.
+     */
+    public Equipment(String name, int strengthModifier, int defenseModifier, int intelligenceModifier){
         this.name = name;
-        this.sM = sM;
-        this.dM = dM;
-        this.iM = iM;
+        this.strengthModifier = strengthModifier;
+        this.defenseModifier = defenseModifier;
+        this.intelligenceModifier = intelligenceModifier;
     }
 
+    /**
+     * Gets the strength modifier of the equipment.
+     * @return The strength modifier of the equipment.
+     */
     public int getStrengthModifier(){
-        return sM;
+        return strengthModifier;
     }
 
+    /**
+     * Gets the defence modifier of the equipment.
+     * @return The defense modifier of the equipment.
+     */
     public int getDefenceModifier(){
-        return dM;
+        return defenseModifier;
     }
 
+    /**
+     * Gets the intelligence modifier of the equipment.
+     * @return The intelligence modifier of the equipment.
+     */
     public int getIntelligenceModifier(){
-        return iM;
+        return intelligenceModifier;
     }
 
+    /**
+     * Gets the name of the equipment.
+     * @return The name of the equipment.
+     */
     public String getName(){
         return name;
     }
