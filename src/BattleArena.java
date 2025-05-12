@@ -49,11 +49,11 @@ public class BattleArena {
     public void saveGameState(String filename) throws IOException {
         try (FileWriter writer = new FileWriter(filename)) {
             writer.write("Team 1: " + team1.getTeamName() + "\n");
-            for (Character c : team1.getMembers()) {
+            for (GameCharacter c : team1.getMembers()) {
                 writer.write(c.getName() + " - HP: " + c.getHealth() + "\n");
             }
             writer.write("Team 2: " + team2.getTeamName() + "\n");
-            for (Character c : team2.getMembers()) {
+            for (GameCharacter c : team2.getMembers()) {
                 writer.write(c.getName() + " - HP: " + c.getHealth() + "\n");
             }
         }

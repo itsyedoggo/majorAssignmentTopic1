@@ -8,11 +8,11 @@ public class Team {
         this.teamName = teamName;
         this.members = new ArrayList<>();
     }
-    public void addCharacter (Character character) {
+    public void addCharacter (GameCharacter character) {
         members.add(character);
     }
     public boolean hasLivingMembers() {
-        for (Character c: members) {
+        for (GameCharacter c: members) {
             if (c.isAlive()) {
                 return true;
             }
@@ -21,7 +21,7 @@ public class Team {
     }
 
     public GameCharacter getNextAliveCharacter () {
-        for (character c: members) {
+        for (GameCharacter c: members) {
             if (c.isAlive()){
                 return c;
             }
@@ -36,11 +36,11 @@ public class Team {
     }
 
     public void battle(Team attackingTeam, Team defendingTeam) {
-        Character attacker = attackingTeam.getNextAliveCharacter();
-        Character defender = defendingTeam.getNextAliveCharacter();
-        if (attacker == null || defender == null) {
-            declareWinner();
-            return;
+    GameCharacter attacker = attackingTeam.getNextAliveCharacter();
+    GameCharacter defender = defendingTeam.getNextAliveCharacter();
+    if (attacker == null || defender == null) {
+        declareWinner();
+        return;
         }
     }
 
