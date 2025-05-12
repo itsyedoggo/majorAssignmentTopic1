@@ -8,7 +8,7 @@ public class Character {
     private String race;
     private String characterClass;
 
-    public Character(String name, int health, int defense, String race, String characterClass) {
+    public Character(String name, int health, int strength, int defense, String race, String characterClass) {
         this.name = name;
         this.health = health;
         this.strength = strength;
@@ -21,15 +21,15 @@ public class Character {
         return health > 0;
     }
 
-    public int attack(character opponent){
+    public int attack(Character opponent){
         int diceRoll = rng.rollDice(); //1-6
         int baseDamage = this.strength - opponent.defense;
         int damage;
 
         if (diceRoll == 6) {
             damage = (int)(baseDamage * 2); // supercharged attack
-        } else if (diceRoll = 1) {
-            damage = (int)(baseDamamge * 0.5); //weak attack
+        } else if (diceRoll == 1) {
+            damage = (int)(baseDamage * 0.5); //weak attack
         } else {
             damage = baseDamage; //normal attack
         }
@@ -37,7 +37,7 @@ public class Character {
 
         opponent.takeDamage(damage);
 
-        System.out.println(this.name + " rolled a " + diceROll + "!");
+        System.out.println(this.name + " rolled a " + diceRoll + "!");
         return damage;
     }
     public void takeDamage(int damage) {
@@ -49,6 +49,6 @@ public class Character {
     public String getName() { return name; }
     public int getHealth() { return health; }
     public String getRace() { return race; }
-    public String getCHaracterClass () { return characterClass; }
+    public String getCharacterClass () { return characterClass; }
 }
     //changed
