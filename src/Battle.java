@@ -21,7 +21,7 @@ public class Battle {
      */
     public String startFight() {
         if (!attacker1.isAlive() || !attacker2.isAlive()) {
-            return "One of the fighters is already dead!!";
+            return "One of the fighters is already dead!!"; // test 
         }
 
         int damage = attacker1.attack(attacker2);
