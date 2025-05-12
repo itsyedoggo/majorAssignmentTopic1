@@ -12,7 +12,7 @@ public class CharacterTest {
         int damage = attacker.attack(defender);
 
         assertTrue(damage >= 0 && damage <= 15);
-        assertEquals(originalHP - damage, defender.getHealth());
+        assertEquals(originalHP - damage, defender.getHealthPoints());
     }
 
     @Test

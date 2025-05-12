@@ -161,39 +161,66 @@ public class BattleArena {
         try (FileWriter writer = new FileWriter(filename)) {
             writer.write("Team 1: " + team1.getTeamName() + "\n");
             for (GameCharacter c : team1.getMembers()) {
-                writer.write(c.getName() + " - HP: " + c.getHealth() + "\n");
+                writer.write(c.getName() + " - HP: " + c.getHealthPoints() + "\n");
             }
             writer.write("Team 2: " + team2.getTeamName() + "\n");
             for (GameCharacter c : team2.getMembers()) {
-                writer.write(c.getName() + " - HP: " + c.getHealth() + "\n");
+                writer.write(c.getName() + " - HP: " + c.getHealthPoints() + "\n");
             }
         }
     }
 
     public void loadGameState(String filename) throws IOException {
-        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
-            String team1Name = reader.readLine().substring(7); // Remove "Team 1: "
-            team1 = new Team(team1Name);
-            String line;
-            while ((line = reader.readLine()) != null && !line.startsWith("Team 2:")) {
-                String[] parts = line.split(" - HP: ");
-                String name = parts[0];
-                int health = Integer.parseInt(parts[1]);
-                GameCharacter character = new GameCharacter(name, health, 10, 5, "Human", "Warrior"); // Default stats
-                team1.addMember(character);
-            }
-
-            String team2Name = reader.readLine().substring(7); // Remove "Team 2: "
-            team2 = new Team(team2Name);
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(" - HP: ");
-                String name = parts[0];
-                int health = Integer.parseInt(parts[1]);
-                GameCharacter character = new GameCharacter(name, health, 10, 5, "Human", "Warrior"); // Default stats
-                team2.addMember(character);
-            }
-        } catch (IOException e) {
-            System.err.println("Error loading game state: " + e.getMessage());
+    try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+        String team1NameLine = reader.readLine();
+        if (team1NameLine == null || !team1NameLine.startsWith("Team 1: ")) {
+            throw new IOException("Invalid game state file format: Missing or invalid Team 1 line");
         }
+        String team1Name = team1NameLine.substring(7);
+        team1 = new Team(team1Name);
+
+        String line;
+        while ((line = reader.readLine()) != null && !line.startsWith("Team 2: ")) {
+            String[] parts = line.split(" - HP: ");
+            if (parts.length != 2) {
+                System.out.println("Skipping invalid line: " + line);
+                continue;
+            }
+            String name = parts[0].trim();
+            try {
+                int health = Integer.parseInt(parts[1].trim());
+                GameCharacter character = new GameCharacter(name, health, 10, 5, "Human", "Warrior");
+                team1.addMember(character);
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid health format: " + parts[1]);
+            }
+        }
+
+        if (line == null || !line.startsWith("Team 2: ")) {
+            throw new IOException("Invalid game state file format: Missing or invalid Team 2 line");
+        }
+        String team2Name = line.substring(7);
+        team2 = new Team(team2Name);
+
+        while ((line = reader.readLine()) != null) {
+            String[] parts = line.split(" - HP: ");
+            if (parts.length != 2) {
+                System.out.println("Skipping invalid line: " + line);
+                continue;
+            }
+            String name = parts[0].trim();
+            try {
+                int health = Integer.parseInt(parts[1].trim());
+                GameCharacter character = new GameCharacter(name, health, 10, 5, "Human", "Warrior");
+                team2.addMember(character);
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid health format: " + parts[1]);
+            }
+        }
+
+    } catch (IOException e) {
+        System.err.println("Error loading game state: " + e.getMessage());
+        throw e; // Re-throw the exception to be handled by the caller
     }
+}
 }

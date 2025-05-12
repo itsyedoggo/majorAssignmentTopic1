@@ -47,9 +47,7 @@ public class GameCharacter {
         if (health < 0) health = 0;
     }
 
-    public int getHealthPoints() {
-        return health;
-    }
+    // Removed duplicate method getHealthPoints()
 
     public String getName() { return name; }
     public int getHealthPoints() { return health; }
