@@ -4,17 +4,17 @@ public class RPGCombatMain {
     public static void main(String [] args) {
         // Create characters
         //creating heroes 
-        Character batman = new Character("Batman", 100, 20, 10, "Human", "Warrior");
-        Character superman = new Character("Superman", 120, 25, 15, "Kryptonian", "Tank");
-        Character ironMan = new Character("Iron Man", 90, 18, 8, "Human", "Mage");
-        Character wonderWoman = new Character("Wonder Woman", 110, 22, 12, "Amazon", "Paladin");
+        GameCharacter batman = new GameCharacter("Batman", 100, 20, 10, "Human", "Warrior");
+        GameCharacter superman = new GameCharacter("Superman", 120, 25, 15, "Kryptonian", "Tank");
+        GameCharacter ironMan = new GameCharacter("Iron Man", 90, 18, 8, "Human", "Mage");
+        GameCharacter wonderWoman = new GameCharacter("Wonder Woman", 110, 22, 12, "Amazon", "Paladin");
         
 
         //creating villains
-        Character joker = new Character("Joker", 90, 18, 8, "Human", "Assassin");
-        Character lexLuthor = new Character("Lex Luthor", 95, 20, 10, "Human", "Mage");
-        Character obadiahStane = new Character("Obadiah Stane", 85, 15, 5, "Human", "Warrior");
-        Character Ares = new Character("Ares", 120, 25, 15, "God", "Tank");
+        GameCharacter joker = new GameCharacter("Joker", 90, 18, 8, "Human", "Assassin");
+        GameCharacter lexLuthor = new GameCharacter("Lex Luthor", 95, 20, 10, "Human", "Mage");
+        GameCharacter obadiahStane = new GameCharacter("Obadiah Stane", 85, 15, 5, "Human", "Warrior");
+        GameCharacter Ares = new GameCharacter("Ares", 120, 25, 15, "God", "Tank");
 
         // Create teams
         Team heroes = new Team("Heroes");

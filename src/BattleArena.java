@@ -21,10 +21,10 @@ public class BattleArena {
             declareWinner();
             return;
         }
-        Character attacker = attackingTeam.getNextAliveCharacter();
-        Character defender = defendingTeam.getNextAliveCharacter();
+        GameCharacter attacker = attackingTeam.getNextAliveCharacter();
+        GameCharacter defender = defendingTeam.getNextAliveCharacter();
 
-        Battle battle = new Battle(attacker, defender);
+        Battle battle = new Battle (attacker, defender);
         String result = battle.startFight();
         System.out.println(result);
         battleLog.write(result + "\n");
