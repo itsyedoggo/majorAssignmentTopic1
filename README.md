@@ -30,8 +30,10 @@ The program is structured into several classes, each responsible for a specific 
 
 ## 4. Task Allocation
 
-*   Mark: 50% (Designed the `GameCharacter` and `Battle` classes, implemented the combat logic, wrote the unit tests).
-*   Other Member: 50% (Implemented the `Team` and `BattleArena` classes, designed the UML diagrams, wrote the #README.md file).
+*   Mark 48427241: 25% (Designed the `GameCharacter` and `Battle` classes, implemented the combat logic, wrote the unit tests).
+*   Natalie : 25% (Implemented the `Team` and `BattleArena` classes, designed the UML diagrams, wrote the #README.md file).
+*   Wesly : 25%
+*   Nikhat : 25%
 
 ## 5. Analysis of Two Methods
 
