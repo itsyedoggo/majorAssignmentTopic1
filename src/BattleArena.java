@@ -11,6 +11,7 @@ public class BattleArena {
     private Team team2;
     private FileWriter battleLogWriter; // Renamed to avoid confusion
     private BattleLogEntry history; // Use BattleLogEntry
+    private int turnCounter = 1;
 
     /**
      * Constructs a new BattleArena.
@@ -46,32 +47,46 @@ public class BattleArena {
      * @throws IOException If an I/O error occurs.
      */
     private void fightTurn(Team attackingTeam, Team defendingTeam) throws IOException {
-        if (!attackingTeam.hasLivingMembers() || !defendingTeam.hasLivingMembers()) {
-            return; // Base case: exit if a team has no living members
-        }
-        GameCharacter attacker = attackingTeam.getNextAliveCharacter();
-        GameCharacter defender = defendingTeam.getNextAliveCharacter();
-        if (attacker == null || defender == null) {
-            return; // Exit if no alive characters
-        }
-
-        Battle battle = new Battle(attacker, defender);
-        String result = battle.startFight();
-        System.out.println(result);
-        battleLogWriter.write(result + "\n");
-
-        // Add to battle history
-        if (history == null) {
-            history = new BattleLogEntry(result); // Use BattleLogEntry
-        } else {
-            history.addLog(result);
-        }
-
-        // Switch attacker and defender for the next turn
-        Team temp = attackingTeam;
-        attackingTeam = defendingTeam;
-        defendingTeam = temp;
+    if (!attackingTeam.hasLivingMembers() || !defendingTeam.hasLivingMembers()) {
+        return;
     }
+
+    GameCharacter attacker = attackingTeam.getNextAliveCharacter();
+    GameCharacter defender = defendingTeam.getNextAliveCharacter();
+    if (attacker == null || defender == null) {
+        return;
+    }
+
+    System.out.println("🔁 Turn " + turnCounter + ":");
+    turnCounter++;
+
+    Battle battle = new Battle(attacker, defender);
+    String result = battle.startFight();
+
+    System.out.println(result);
+    System.out.println("❤️ " + defender.getName() + "'s HP: " + defender.getHealthPoints());
+    System.out.println("--------------------------------------------------");
+
+    battleLogWriter.write(result + "\n");
+
+    if (history == null) {
+        history = new BattleLogEntry(result);
+    } else {
+        history.addLog(result);
+    }
+
+    try {
+        Thread.sleep(800); // Delay between turns
+    } catch (InterruptedException e) {
+        Thread.currentThread().interrupt();
+    }
+
+    // Switch attacking and defending team
+    Team temp = attackingTeam;
+    attackingTeam = defendingTeam;
+    defendingTeam = temp;
+}
+
 
     /**
      * Declares the winner of the battle and closes the battle log.
