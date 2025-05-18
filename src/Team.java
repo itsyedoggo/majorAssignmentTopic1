@@ -7,6 +7,7 @@ import java.util.List;
 public class Team {
     private String teamName;
     private List<GameCharacter> members;
+    private int lastIndex = -1;
 
     /**
      * Constructs a new Team object.
@@ -42,14 +43,19 @@ public class Team {
      * Gets the next alive character on the team.
      * @return The next alive character on the team, or null if there are no alive characters.
      */
-    public GameCharacter getNextAliveCharacter() {
-        for (GameCharacter c : members) {
-            if (c.isAlive()) {
-                return c;
-            }
+
+public GameCharacter getNextAliveCharacter() {
+    int size = members.size();
+    for (int i = 1; i <= size; i++) {
+        int index = (lastIndex + i) % size;
+        GameCharacter c = members.get(index);
+        if (c.isAlive()) {
+            lastIndex = index;
+            return c;
         }
-        return null; // No living characters left
     }
+    return null; // No living members
+}
 
     /**
      * Gets the name of the team.

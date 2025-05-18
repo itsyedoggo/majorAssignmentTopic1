@@ -31,14 +31,25 @@ public class BattleArena {
      * @throws IOException If an I/O error occurs.
      */
     public void startBattle() throws IOException {
-        while (team1.hasLivingMembers() && team2.hasLivingMembers()) {
-            fightTurn(team1, team2);
-            if (!team1.hasLivingMembers() || !team2.hasLivingMembers()) {
-                break; // Exit loop if a team has no living members
-            }
+    Team currentAttacker = team1;
+    Team currentDefender = team2;
+
+    while (team1.hasLivingMembers() && team2.hasLivingMembers()) {
+        fightTurn(currentAttacker, currentDefender);
+
+        // Alternate attacker and defender each turn
+        Team temp = currentAttacker;
+        currentAttacker = currentDefender;
+        currentDefender = temp;
+
+        if (!team1.hasLivingMembers() || !team2.hasLivingMembers()) {
+            break;
         }
-        declareWinner();
     }
+
+    declareWinner();
+}
+
 
     /**
      * Simulates a single turn of the battle.
@@ -57,14 +68,14 @@ public class BattleArena {
         return;
     }
 
-    System.out.println("🔁 Turn " + turnCounter + ":");
+    System.out.println("Turn " + turnCounter + ":");
     turnCounter++;
 
     Battle battle = new Battle(attacker, defender);
     String result = battle.startFight();
 
     System.out.println(result);
-    System.out.println("❤️ " + defender.getName() + "'s HP: " + defender.getHealthPoints());
+    System.out.println("HP " + defender.getName() + "'s HP: " + defender.getHealthPoints());
     System.out.println("--------------------------------------------------");
 
     battleLogWriter.write(result + "\n");
@@ -81,10 +92,6 @@ public class BattleArena {
         Thread.currentThread().interrupt();
     }
 
-    // Switch attacking and defending team
-    Team temp = attackingTeam;
-    attackingTeam = defendingTeam;
-    defendingTeam = temp;
 }
 
 
