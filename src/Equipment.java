@@ -53,3 +53,7 @@ public class Equipment {
         return name;
     }
 }
+/**
+ * currently not used
+ * Represents a piece of equipment that can be used by a character.
+ */
