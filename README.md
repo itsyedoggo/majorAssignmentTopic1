@@ -22,18 +22,42 @@ The program is structured into several classes, each responsible for a specific 
 
 ## 3. Instructions to Run the Program
 
-1.  Compile the Java files using `javac *.java`.
-2.  Run the program using `java RPGCombatMain`.
-3.  The program will output the battle log to the console and save it to a file named `BattleLog.txt`.
-4.  To save the game state, use the `saveGameState` method in the `BattleArena` class.
-5.  To load the game state, use the `loadGameState` method in the `BattleArena` class.
+### To Compile and Run the Game Only (Skip Unit Tests)
 
+1. Open a terminal and navigate into the `src/` folder.
+2. Compile the game files into the `bin/` folder:
+ javac -d ../bin Battle.java BattleArena.java BattleLogEntry.java Equipment.java GameCharacter.java RPGCombatMain.java RandomNumberGenerator.java Team.java
+3. Navigate to the bin/ folder:
+ cd ../bin
+4. Run the game:
+ java RPGCombatMain
+
+### To Compile and Run Including Unit Tests (JUnit Required)
+
+1. In the `src/` folder, compile all files including test classes using the JUnit JAR in the `lib/` folder
+ javac -cp ".;../lib/junit-platform-console-standalone-1.10.2.jar" -d ../bin *.java
+2. Run the game from the `bin/` folder:
+ java -cp ../bin RPGCombatMain
+3. Run all tests:
+ java -jar ../lib/junit-platform-console-standalone-1.10.2.jar --class-path ../bin --scan-class-path
+
+### Output and Save/Load
+* The game will print the battle log to the console.
+
+* It also saves the log to BattleLog.txt.
+
+* To save the game state programmatically:
+ arena.saveGameState("gamestate.txt");
+* To load a previously saved game state:
+ arena.loadGameState("gamestate.txt");
+
+ 
 ## 4. Task Allocation
 
-*   Mark 48427241: 25% (Designed the `GameCharacter` and `Battle` classes, implemented the combat logic, wrote the unit tests).
-*   Natalie : 25% (Implemented the `Team` and `BattleArena` classes, designed the UML diagrams, wrote the #README.md file).
-*   Wesly : 25%
-*   Nikhat : 25%
+*   *Mark (48427241)* – 25%: Led the development of core gameplay logic, including the GameCharacter and Battle classes. Also implemented most of the unit tests and assisted in debugging and integrating all modules.
+*   *Natalie* – 25%: Led the structural design of the project, implementing key classes like Team and BattleArena, producing the UML diagram, and writing the entire README.md and documentation. Major contributor to planning and team coordination.
+*   *Wesly* – 25%: Assisted with recursive structure (BattleLogEntry) and initial I/O feature implementation. Contributed to testing and logic review.
+*   *Nikhat* – 25%: Contributed to code review, testing game behavior across edge cases, and refining documentation and save/load functionality.
 
 ## 5. Analysis of Two Methods
 
