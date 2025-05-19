@@ -56,7 +56,7 @@ The program is structured into several classes, each responsible for a specific 
 
 *   *Mark (48427241)* – 25%: Led the development of core gameplay logic, including the GameCharacter and Battle classes. Also implemented most of the unit tests and assisted in debugging and integrating all modules.
 *   *Nataly (48234842)* – 25%: Led the structural design of the project, implementing key classes like Team and BattleArena, producing the UML diagram, and writing the entire README.md and documentation. Major contributor to planning and team coordination.
-*   *Wesly* – 25%: Assisted with recursive structure (BattleLogEntry) and initial I/O feature implementation. Contributed to testing and logic review.
+*   *Wesly (47798289)* – 25%: Assisted with recursive structure (BattleLogEntry) and initial I/O feature implementation. Contributed to testing and logic review. 
 *   *Nikhat* – 25%: Contributed to code review, testing game behavior across edge cases, and refining documentation and save/load functionality.
 
 ## 5. Analysis of Two Methods
