@@ -2,7 +2,7 @@
 
 ## 1. Problem Description
 
-This program simulates a turn-based combat system between two teams of characters with different attributes (health, strength, defense) and abilities. The goal is to create a realistic and engaging combat experience that incorporates randomness and strategic decision-making. The simulation allows users to create teams of heroes and villains, equip them with items, and watch them battle it out in an arena. The outcome of each battle is logged to a file, providing a detailed record of the events.
+This program simulates a turn-based combat system between two teams of characters with different attributes (health, strength, defense) and abilities, designed to test and analyze combat interactions between teams. The goal is to create a realistic and engaging combat experience that incorporates randomness and strategic decision-making. The simulation allows users to create teams of heroes and villains, equip them with items, and watch them battle it out in an arena. By simulating battles using character stats and controlled randomness, the program helps developers prototype and balance gameplay mechanics without relying on a full graphical engine. Combat outcomes and logs are automatically recorded for post-battle analysis.
 
 ## 2. Program Structure
 

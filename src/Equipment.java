@@ -1,6 +1,10 @@
 /**
  * Represents an item of equipment that can be used by a character.
+ 
+ * this class is currently not used
+ * Represents a piece of equipment that can be used by a character, possiblly with newer versions of the game or when characters unlock new levels in the future. 
  */
+
 public class Equipment {
     String name;
     int strengthModifier; //strength modifier
@@ -53,7 +57,3 @@ public class Equipment {
         return name;
     }
 }
-/**
- * currently not used
- * Represents a piece of equipment that can be used by a character.
- */
