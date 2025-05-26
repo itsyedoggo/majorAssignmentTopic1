@@ -24,8 +24,8 @@ The program is structured into several classes, each responsible for a specific 
 
 ### To Compile and Run the Game Only (Skip Unit Tests)
 
-1. Open a terminal and navigate into the `src/` folder.
-2. Compile the game files into the `bin/` folder:
+1. In the `src/` folder, right click and navigate to "open in integrated teminal". Once clicked...
+2. Compile the following game files into the `bin/` folder (copy and paste the below code into the terminal):
  javac -d ../bin Battle.java BattleArena.java BattleLogEntry.java Equipment.java GameCharacter.java RPGCombatMain.java RandomNumberGenerator.java Team.java
 3. Navigate to the bin/ folder:
  cd ../bin
@@ -34,7 +34,7 @@ The program is structured into several classes, each responsible for a specific 
 
 ### To Compile and Run Including Unit Tests (JUnit Required)
 
-1. In the `src/` folder, compile all files including test classes using the JUnit JAR in the `lib/` folder
+1. In the `src/` folder, right click and navigate to "open in integrated teminal". Once clicked, compile all files including test classes using the JUnit JAR in the `lib/` folder (copy and paste the following code in the terminal)
  javac -cp ".;../lib/junit-platform-console-standalone-1.10.2.jar" -d ../bin *.java
 2. Run the game from the `bin/` folder:
  java -cp ../bin RPGCombatMain
